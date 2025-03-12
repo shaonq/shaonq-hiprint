@@ -1,148 +1,3 @@
-<div align="center" style="margin-top: 10px">
-  <a href="http://hiprint.io/">
-    <img width="100" height="100" src="http://hiprint.io/Content/assets/hi.png">
-  </a>
-  <a href="https://cn.vuejs.org/">
-    <img width="100" height="100" src="https://v2.cn.vuejs.org/images/logo.svg">
-  </a>
-</div>
-
-![image](https://badgen.net/packagephobia/publish/vue-plugin-hiprint)
-![image](https://badgen.net/npm/v/vue-plugin-hiprint)
-<a href="https://gitee.com/CcSimple/vue-plugin-hiprint">
-<img src="https://gitee.com/CcSimple/vue-plugin-hiprint/badge/star.svg?theme=dark" alt="Gitee star">
-</a>
-<a href="https://gitee.com/CcSimple/vue-plugin-hiprint">
-<img src="https://gitee.com/CcSimple/vue-plugin-hiprint/badge/fork.svg?theme=dark" alt="Gitee fork">
-</a>
-![image](https://badgen.net/github/stars/CcSimple/vue-plugin-hiprint)
-![image](https://badgen.net/github/forks/CcSimple/vue-plugin-hiprint)
-![image](https://badgen.net/npm/dw/vue-plugin-hiprint)
-![image](https://badgen.net/npm/dm/vue-plugin-hiprint)
-![image](https://badgen.net/npm/dy/vue-plugin-hiprint)
-
-## 关于此插件
-
-vue-plugin-hiprint (基于 [hiprint 2.5.4](http://hiprint.io/)) 当时只是为了方便 <span style="color: red">我（并非 hiprint 原作者）</span> 在 vue 项目中引入使用，所以以此命名。
-
-此 <span style="color: red">插件</span> 仅仅是一个 <span style="color: red">JavaScript【工具库】</span> 而非 <span style="color: yellow">Vue【组件库】</span>，所以它默认不包含 demo 中的那些组件页面（demo 代码可复制使用）。
-
-由于 hiprint 官网最后一次更新时间为 2019 年【hiprint 2.5.4 是 [LGPL](#关于lgpl协议) 协议】，后在诸多使用者及反馈下进行了许多优化调整。
-
-## vue-plugin-hiprint [更新日志](CHANGELOG.md)
-
-（感谢各位群友支持和参与）
-
-## 关联项目矩阵
-
-| 项目名称             | 项目地址                                                                                                                 | 下载地址                                                          | 描述                                                               |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------ |
-| vue-plugin-hiprint   | [github](https://github.com/CcSimple/vue-plugin-hiprint)、[gitee](https://gitee.com/CcSimple/vue-plugin-hiprint)         | [npm](https://www.npmjs.com/package/vue-plugin-hiprint)           | 打印设计器                                                         |
-| electron-hiprint     | [github](https://github.com/CcSimple/electron-hiprint)、[gitee](https://gitee.com/CcSimple/electron-hiprint)             | [releases](https://github.com/CcSimple/electron-hiprint/releases) | 直接打印客户端                                                     |
-| node-hiprint-transit | [github](https://github.com/Xavier9896/node-hiprint-transit)、[gitee](https://gitee.com/Xavier9896/node-hiprint-transit) | -                                                                 | web 与客户端中转服务 Node 实现                                     |
-| hiprint-transit-java | [github](https://github.com/weaponready/hiprint-transit-java)                                                            | -                                                                 | web 与客户端中转服务 Java 实现                                     |
-| uni-app-hiprint      | [github](https://github.com/Xavier9896/uni-app-hiprint)                                                                  | -                                                                 | uni-app 项目通过 webview 使用 vue-plugin-hiprint demo              |
-| node-hiprint-pdf     | [github](https://github.com/CcSimple/node-hiprint-pdf)                                                                   | -                                                                 | 提供通过 node 对 vue-plugin-hiprint 模板生成 矢量 pdf、image、html |
-
-> hiprint for Vue2.x / Vue3.x (基于 jQuery, 也支持其他框架)
-
-> **jQuery/uniapp** 项目 见下方 [jQuery/uniapp 项目使用](#jqueryuniapp-项目使用)
-
-> [!IMPORTANT]
->
-> **注意事项**
->
-> - NodeJs 需要 16.x 版本 (开发使用 16.18.1)
-> - <div style="color: red">【vue-plugin-hiprint】与【hiprint.io官网】差异甚多,请忽混用!请忽混用!请忽混用!</div>
-> - <div style="color: orange">请使用项目关联的打印客户端,或者自行修改打印客户端的源码,以适配本项目的模板!</div>
-> - 主分支是融合版本的最新代码,如果你不需要修改 hiprint 相关代码. 请使用 npm 包的方式安装.
-> - 使用直接客户端时,本地开发连接没问题,部署到线上出现跨域无法连接打印客户端问题:
-> - [线上跨域问题,请升级 https! 说明:https://www.cnblogs.com/daysme/p/15493523.html](https://www.cnblogs.com/daysme/p/15493523.html)
-> - 如需提交 PR 请前往 github 合并后可自动发布 npm 包并同步代码到 gitee
-> - vue-plugin-hiprint 包不包含 UI 界面,需要自行处理。如果想更快速引入请查看 [sv-print 组件库](https://ccsimple.github.io/sv-print-docs/)
-
-## 快速链接
-
-Demo 预览：[https://ccsimple.gitee.io/vue-plugin-hiprint/](https://ccsimple.gitee.io/vue-plugin-hiprint/)(已挂，恢复看 gitee 官方情况)
-
-Github Demo 预览：[https://ccsimple.github.io/vue-plugin-hiprint/](https://ccsimple.github.io/vue-plugin-hiprint/)(慢，需翻墙)
-
-更新记录：[npm 包版本及更新记录](CHANGELOG.md)
-
-打印客户端：[https://gitee.com/CcSimple/electron-hiprint](https://gitee.com/CcSimple/electron-hiprint)
-
-中转服务：[https://github.com/Xavier9896/node-hiprint-transit](https://github.com/Xavier9896/node-hiprint-transit)
-
-## 文章链接
-
-入门篇: [【vue-plugin-hiprint】使用-入门篇](https://mp.weixin.qq.com/s/4N4f7CkxodA-fuTJ_FbkOQ)
-
-进阶篇: [【vue-plugin-hiprint】使用-进阶篇](https://mp.weixin.qq.com/s/LYZP2iqV0gy4m76mttplAw)
-
-provider: [【vue-plugin-hiprint】如何自定义可拖拽元素 provider](https://mp.weixin.qq.com/s/n9i1j8hhVJvnlfJRPRtWog)
-
-打印篇: [【vue-plugin-hiprint】使用-打印篇](https://mp.weixin.qq.com/s/P-Zz8YfELmRNi4EuED4QmA)
-
-参数篇: [【vue-plugin-hiprint】使用-参数篇](https://mp.weixin.qq.com/s/vfgSG62tAXn7Ot7y3x68fw)
-
-实战动态 provider: [【vue-plugin-hiprint】实战-动态 provider](https://mp.weixin.qq.com/s/UVkhul1tynjaUjdC_NaHfw)
-
-实战动态模板: [【vue-plugin-hiprint】实战-动态模板](https://mp.weixin.qq.com/s/JXXC9Fyy_PgPXrwh1mDBTQ)
-
-常见问题汇总 ①: [【vue-plugin-hiprint】常见问题汇总 ①](https://mp.weixin.qq.com/s/E-ZfuKLH3-GvKn4AosRvaw)
-
-常见问题汇总 ②: [【vue-plugin-hiprint】常见问题汇总 ②](https://mp.weixin.qq.com/s/UEnr24bB_P6KmpZ7iZmYvA)
-
-常见问题汇总 ③: [【vue-plugin-hiprint】常见问题汇总 ③](https://mp.weixin.qq.com/s/lRimQ-cjuwN3mg6RicPyag)
-
-## 更多参数的文档请仔细查阅文档
-
-hiprint 官方文档：[http://hiprint.io/docs/start](http://hiprint.io/docs/start)
-
-本人写的部分文档: [https://ccsimple.github.io/sv-print-docs/config/hiprint.html](https://ccsimple.github.io/sv-print-docs/config/hiprint.html)
-
-## 安装使用
-
-```
-npm install vue-plugin-hiprint
-```
-
-```html
-<!--【必须】在index.html 文件中添加打印所需样式(cdn可能不稳定):-->
-<link
-  rel="stylesheet"
-  type="text/css"
-  media="print"
-  href="https://npmmirror.com/package/vue-plugin-hiprint/files/dist/print-lock.css"
-/>
-<!-- OR -->
-<link
-  rel="stylesheet"
-  type="text/css"
-  media="print"
-  href="https://cdn.jsdelivr.net/npm/vue-plugin-hiprint@latest/dist/print-lock.css"
-/>
-<!-- 可以调整成 相对链接/自有链接, 【重要】名称需要一致 【print-lock.css】-->
-<link rel="stylesheet" type="text/css" media="print" href="/print-lock.css" />
-```
-
-## 项目截图
-
-<table>
-    <tr>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/img_0.png"/></td>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/img_1.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/img_2.png"/></td>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/img_3.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/gif00.gif"/></td>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/gif01.gif"/></td>
-    </tr>
-</table>
-
 ## 拖拽设计使用
 
 ```javascript
@@ -295,7 +150,7 @@ hiprint.init({
 });
 ```
 
-## vue/vue3 全局引入
+## vue3 全局引入
 
 > 全局引入，方便在任何地方不引入直接调用打印。示例为代码模式 (拖拽设计请往下看)
 
@@ -386,55 +241,6 @@ hiprintTemplate.print({});
 hiprintTemplate.print2({});
 ```
 
-## jQuery/uniapp 项目使用
-
-> uniapp 需要嵌入到 web 浏览器中.(需要支持 window 全局对象环境)
-
-```html
-<!-- index.html -->
-<head>
-  <!-- 打印样式是必须的，你可以调整成自由链接， 注意名称 print-lock.css -->
-  <link
-    rel="stylesheet"
-    type="text/css"
-    media="print"
-    href="https://unpkg.com/vue-plugin-hiprint@latest/dist/print-lock.css"
-  />
-  <!-- 下列使用的都是 unpkg提供的 稳定性未知, 建议下载自行处理  -->
-  <!-- jquery 必须 -->
-  <script src="https://unpkg.com/jquery@3.6.1/dist/jquery.js"></script>
-  <!-- 条形码 -->
-  <script src="https://unpkg.com/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-  <!-- 二维码、条形码 bwip-js -->
-  <script src="https://unpkg.com/bwip-js@4.5.1/dist/bwip-js.js"></script>
-  <!-- 数字转大写 -->
-  <script src="https://unpkg.com/nzh@1.0.14/dist/nzh.min.js"></script>
-  <!-- 颜色选择器 -->
-  <script src="https://unpkg.com/@claviska/jquery-minicolors@2.3.6/jquery.minicolors.min.js"></script>
-  <!-- 直接打印(print2)需要 -->
-  <script src="https://unpkg.com/socket.io-client@4.5.1/dist/socket.io.min.js"></script>
-  <!-- toPdf需要 -->
-  <script src="https://unpkg.com/canvg@3.0.10/lib/umd.js"></script>
-  <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-  <script src="https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.js"></script>
-  <!-- vue-plugin-hiprint 😃 -->
-  <script src="https://unpkg.com/vue-plugin-hiprint@latest/dist/vue-plugin-hiprint.js"></script>
-</head>
-<body>
-  <!-- 注意 defer -->
-  <script defer>
-    console.log("vue-plugin-hiprint");
-    console.log(window["vue-plugin-hiprint"]);
-    console.log("hiprint");
-    // hiprint 以注入 全局
-    console.log(hiprint);
-    var autoConnect = window["vue-plugin-hiprint"].autoConnect,
-      disAutoConnect = window["vue-plugin-hiprint"].disAutoConnect,
-      defaultElementTypeProvider =
-        window["vue-plugin-hiprint"].defaultElementTypeProvider;
-  </script>
-</body>
-```
 
 ## 配套直接打印客户端(win/mac/linux)[源码链接](https://gitee.com/CcSimple/electron-hiprint)
 
@@ -475,13 +281,9 @@ this.$error({
       连接【{hiwebSocket.host}】失败！
       <br />
       请确保目标服务器已
-      <a
-        href="https://gitee.com/CcSimple/electron-hiprint/releases"
-        target="_blank"
-      >
+      <a href="https://gitee.com/CcSimple/electron-hiprint/releases" target="_blank">
         下载
-      </a>并
-      <a href="hiprint://" target="_blank">
+      </a>并<a href="hiprint://" target="_blank">
         运行
       </a>
       打印服务！
@@ -628,8 +430,7 @@ hiprintTemplate.print(
     styleHandler: () => {
       // 这里拼接成放html->head标签内的css/style
       // 1.例如：使用hiprin官网的样式
-      let css =
-        '<link href="http://hiprint.io/Content/hiprint/css/print-lock.css" media="print" rel="stylesheet">';
+      let css = '<link href="http://hiprint.io/Content/hiprint/css/print-lock.css" media="print" rel="stylesheet">';
       // 2.重写样式：所有文本红色
       css += "<style>.hiprint-printElement-text{color:red !important;}</style>";
       return css;
@@ -641,8 +442,7 @@ hiprintTemplate.print2(this.printData, {
   styleHandler: () => {
     // 这里拼接成放html->head标签内的css/style
     // 1.例如：使用hiprin官网的样式
-    let css =
-      '<link href="http://hiprint.io/Content/hiprint/css/print-lock.css" media="print" rel="stylesheet">';
+    let css = '<link href="http://hiprint.io/Content/hiprint/css/print-lock.css" media="print" rel="stylesheet">';
     // 2.重写样式：所有文本红色
     css += "<style>.hiprint-printElement-text{color:red !important;}</style>";
     return css;
@@ -708,107 +508,9 @@ autoConnect((status, msg) => {
  */
 ```
 
-## 参与项目
-
-```console
-git clone https://gitee.com/CcSimple/vue-plugin-hiprint.git
-// init
-cd vue-plugin-hiprint
-npm i
-// 调试预览
-npm run serve
-// 打包
-npm run build
-```
-
-## demo 调试（显示打印 iframe）
-
-```javascript
-// 快速显示/隐藏 打印iframe  方便调试 ￣□￣｜｜
-// 在浏览器控制台输入：
-// 显示打印页面
-$("#app").css("display", "none");
-$("#hiwprint_iframe").css("visibility", "visible");
-$("#hiwprint_iframe").css("width", "100%");
-$("#hiwprint_iframe").css("height", "251.09mm"); // 这里替换个实际高度才能显示完
-// 显示vue页面
-$("#app").css("display", "block");
-$("#hiwprint_iframe").css("visibility", "hidden");
-```
-
-## 交流群
-
-<table>
-    <tr>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/group.png"/></td>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/wechat.png"/></td>
-    </tr>
-</table>
-
-> 群人数已超过 200 请 '加我好友' 备注加群, 邀你进群
-
-## 捐赠支持, 或者请我喝杯咖啡 ☕️
-
-> 如果对您有帮助，请点击右上角 ⭐Star 关注或扫码捐赠，感谢支持开源！
-
-<table>
-    <tr>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/zWechat.png"/></td>
-        <td><img src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/zAlipay.png"/></td>
-    </tr>
-</table>
-
-本项目使用 <a href="https://jb.gg/OpenSourceSupport"><img height="40" width="100" src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/WebStorm.svg"/></a><a href="https://jb.gg/OpenSourceSupport"><img width="50" height="50" src="https://gitee.com/CcSimple/vue-plugin-hiprint/raw/main/res/WebStorm_icon.svg"/></a> 开发
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=CcSimple/vue-plugin-hiprint&type=Date)](https://star-history.com/#CcSimple/vue-plugin-hiprint&Date)
-
-## 分支说明
-
-> main： vue2.x + ant1.7.x 融合版 及 npm 包源代码
-
-> npm_demo： vue2.x + ant1.7.x + npm 包使用 示例
-
-> npm_demo_ele： vue2.x + ElementUi 2.x + npm 包使用 示例
-
-> npm_demo_v3： vue3.x + vite + npm 包(0.0.18)使用 示例
-
-## 关于如何融合处理
-
-> 自己融合请查看 vue.config.js 对比 hiprint.bundle.js
-
-> webpack.config.js，是 npm 打包需要处理的
-
 ## 开源使用说明
 
-> npm 包是基于 hiprint 官网 2.5.4 版本基础做的调整及优化;<br/>
-> 本人对开源协议理解有限,如有侵权不合理的地方,请联系告知我;<br/>
-
-hiprint 开源协议如下:
-
 ```
-/**
- * jQuery Hiprint 2.5.4
- *
- * Copyright (c) 2016-2021 www.hinnn.com. All rights reserved.
- *
- * Licensed under the LGPL or commercial licenses
- * To use it on other terms please contact us: hinnn.com@gmail.com
- *
- */
-```
+  forked from CcSimple/vue-plugin-hiprint
 
-## 关于 LGPL 协议
-
-```
-LGPL是GPL的一个为主要为类库使用设计的开源协议。和GPL要求任何使用/修改/衍生之GPL类库的的软件必须采用GPL协议不同。
-
-LGPL允许商业软件通过类库引用(link)方式使用LGPL类库而不需要开源商业软件的代码。这使得采用LGPL协议的开源代码可以被商业软件作为类库引用并发布和销售。
-
-但是如果修改LGPL协议的代码或者衍生，则所有修改的代码，涉及修改部分的额外代码和衍生的代码都必须采用LGPL协议。
-
-因此LGPL协议的开源代码很适合作为第三方类库被商业软件引用，但不适合希望以LGPL协议代码为基础，通过修改和衍生的方式做二次开发的商业软件采用。
-
-GPL/LGPL都保障原作者的知识产权，避免有人利用开源代码复制并开发类似的产品。
 ```

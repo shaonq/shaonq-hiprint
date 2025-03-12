@@ -1,23 +1,12 @@
 {
   "name": "@shaonq/hiprint",
   "description": "hiprint for Vue3.x",
-  "version": "0.0.59-beta2",
+  "version": "0.0.1",
   "author": "shaonq",
   "license": "MIT",
   "main": "dist/vue-plugin-hiprint.js",
-  "private": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/CcSimple/vue-plugin-hiprint.git"
-  },
-  "bugs": {
-    "url": "https://github.com/CcSimple/vue-plugin-hiprint/issues"
-  },
-  "keywords": [
-    "vue",
-    "hiprint",
-    "print"
-  ],
+  "private": true,
+  "keywords": [],
   "files": [
     "dist"
   ],
