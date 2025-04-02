@@ -1,11 +1,10 @@
 <template>
   <a-card>
-    <a-row :gutter="[8,0]" style="margin-bottom: 10px">
+    <a-row :gutter="[8, 0]" style="margin-bottom: 10px">
       <a-col :span="4">
         <!-- 模板选择 -->
-        <a-select v-model='mode' showSearch @change="changeMode" :defaultValue="0" option-label-prop="label"
-                  style="width: 100%;">
-          <a-select-option v-for='(opt,idx) in modeList' :key='idx' :label="opt.name" :value='idx'>
+        <a-select v-model="mode" showSearch @change="changeMode" :defaultValue="0" option-label-prop="label" style="width: 100%">
+          <a-select-option v-for="(opt, idx) in modeList" :key="idx" :label="opt.name" :value="idx">
             {{ opt.name }}
           </a-select-option>
         </a-select>
@@ -14,25 +13,19 @@
         <a-space>
           <!-- 纸张设置 -->
           <a-button-group>
-            <template v-for="(value,type) in paperTypes">
-              <a-button :type="curPaperType === type ? 'primary' : 'info'" @click="setPaper(type,value)" :key="type">
-                {{ type }}
-              </a-button>
-            </template>
+            <a-button v-for="(value, type) in paperTypes" :key="type" :type="curPaperType === type ? 'primary' : 'info'" @click="setPaper(type, value)">
+              {{ type }}
+            </a-button>
             <a-popover v-model="paperPopVisible" title="设置纸张宽高(mm)" trigger="click">
               <div slot="content">
                 <a-input-group compact style="margin: 10px 10px">
-                  <a-input type="number" v-model="paperWidth" style=" width: 100px; text-align: center"
-                           placeholder="宽(mm)"/>
-                  <a-input style=" width: 30px; border-left: 0; pointer-events: none; backgroundColor: #fff"
-                           placeholder="~" disabled
-                  />
-                  <a-input type="number" v-model="paperHeight" style="width: 100px; text-align: center; border-left: 0"
-                           placeholder="高(mm)"/>
+                  <a-input type="number" v-model="paperWidth" style="width: 100px; text-align: center" placeholder="宽(mm)" />
+                  <a-input style="width: 30px; border-left: 0; pointer-events: none; background-color: #fff" placeholder="~" disabled />
+                  <a-input type="number" v-model="paperHeight" style="width: 100px; text-align: center; border-left: 0" placeholder="高(mm)" />
                 </a-input-group>
                 <a-button type="primary" style="width: 100%" @click="otherPaper">确定</a-button>
               </div>
-              <a-button :type="'other'==curPaperType?'primary':''">自定义纸张</a-button>
+              <a-button :type="'other' == curPaperType ? 'primary' : ''">自定义纸张</a-button>
             </a-popover>
           </a-button-group>
           <a-button type="text" icon="zoom-out" @click="changeScale(false)"></a-button>
@@ -42,50 +35,40 @@
             :max="scaleMax"
             :step="0.1"
             disabled
-            style="width: 70px;"
-            :formatter="value => `${(value * 100).toFixed(0)}%`"
-            :parser="value => value.replace('%', '')"
+            style="width: 70px"
+            :formatter="(value) => `${(value * 100).toFixed(0)}%`"
+            :parser="(value) => value.replace('%', '')"
           />
           <a-button type="text" icon="zoom-in" @click="changeScale(true)"></a-button>
           <!-- 预览/打印 -->
           <a-button-group>
-            <a-button type="primary" icon="eye" @click="preView">
-              预览
-            </a-button>
+            <a-button type="primary" icon="eye" @click="preView"> 预览 </a-button>
             <a-button type="primary" @click="print">
               直接打印
-              <a-icon type="printer"/>
+              <a-icon type="printer" />
             </a-button>
             <a-button type="primary" @click="selectAll">全选元素</a-button>
           </a-button-group>
           <!-- 保存/清空 -->
           <a-button-group>
-            <a-button type="primary" icon="save" @click="save">
-              保存
-            </a-button>
-            <a-popconfirm
-              title="是否确认清空?"
-              okType="danger"
-              okText="确定清空"
-              @confirm="clearPaper"
-            >
-              <a-icon slot="icon" type="question-circle-o" style="color: red"/>
+            <a-button type="primary" icon="save" @click="save"> 保存 </a-button>
+            <a-popconfirm title="是否确认清空?" okType="danger" okText="确定清空" @confirm="clearPaper">
+              <a-icon slot="icon" type="question-circle-o" style="color: red" />
               <a-button type="danger">
                 清空
-                <a-icon type="close"/>
+                <a-icon type="close" />
               </a-button>
             </a-popconfirm>
           </a-button-group>
-          <json-view :template="template"/>
+          <json-view :template="template" />
         </a-space>
       </a-col>
     </a-row>
-    <a-row :gutter="[8,0]">
+    <a-row :gutter="[8, 0]">
       <a-col :span="4">
         <a-card style="height: 100vh">
           <a-row>
-            <a-col :span="24" class="rect-printElement-types hiprintEpContainer">
-            </a-col>
+            <a-col :span="24" class="rect-printElement-types hiprintEpContainer"> </a-col>
           </a-row>
         </a-card>
       </a-col>
@@ -103,23 +86,22 @@
       </a-col>
     </a-row>
     <!-- 预览 -->
-    <print-preview ref="preView"/>
+    <print-preview ref="preView" />
   </a-card>
 </template>
 
 <script>
+import printPreview from "./preview";
+import jsonView from "../json-view.vue";
 
-import printPreview from './preview'
-import jsonView from '../json-view.vue'
-
-import {hiprint} from '../../index'
-import providers from './providers'
-import printData from './print-data'
+import { hiprint, disAutoConnect } from "../../index";
+import providers from "./providers";
+import printData from "./print-data";
 
 let hiprintTemplate;
 export default {
   name: "printCustom",
-  components: {printPreview, jsonView},
+  components: { printPreview, jsonView },
   data() {
     return {
       template: null,
@@ -128,86 +110,87 @@ export default {
       modeList: [],
       // 当前纸张
       curPaper: {
-        type: 'other',
+        type: "other",
         width: 220,
-        height: 80
+        height: 80,
       },
       // 纸张类型
       paperTypes: {
-        'A3': {
+        A3: {
           width: 420,
-          height: 296.6
+          height: 296.6,
         },
-        'A4': {
+        A4: {
           width: 210,
-          height: 296.6
+          height: 296.6,
         },
-        'A5': {
+        A5: {
           width: 210,
-          height: 147.6
+          height: 147.6,
         },
-        'B3': {
+        B3: {
           width: 500,
-          height: 352.6
+          height: 352.6,
         },
-        'B4': {
+        B4: {
           width: 250,
-          height: 352.6
+          height: 352.6,
         },
-        'B5': {
+        B5: {
           width: 250,
-          height: 175.6
-        }
+          height: 175.6,
+        },
       },
       scaleValue: 1,
       scaleMax: 5,
       scaleMin: 0.5,
       // 自定义纸张
       paperPopVisible: false,
-      paperWidth: '220',
-      paperHeight: '80',
-      lastjson: '',
-    }
+      paperWidth: "220",
+      paperHeight: "80",
+      lastjson: "",
+    };
   },
   computed: {
     curPaperType() {
-      let type = 'other'
-      let types = this.paperTypes
+      let type = "other";
+      let types = this.paperTypes;
       for (const key in types) {
-        let item = types[key]
-        let {width, height} = this.curPaper
+        let item = types[key];
+        let { width, height } = this.curPaper;
         if (item.width === width && item.height === height) {
-          type = key
+          type = key;
         }
       }
-      return type
-    }
+      return type;
+    },
   },
   mounted() {
-    this.init()
-    this.otherPaper()
+    this.init();
+    disAutoConnect();
+    this.otherPaper();
   },
   methods: {
     init() {
       this.modeList = providers.map((e) => {
-        return {type: e.type, name: e.name, value: e.value}
-      })
-      this.changeMode()
-    },
-    selectAll(){
-      this.template.selectAllElements()
-    },  
-    changeMode() {
-      let {mode} = this
-      let provider = providers[mode]
-      hiprint.init({
-        providers: [provider.f]
+        return { type: e.type, name: e.name, value: e.value };
       });
-      $('.hiprintEpContainer').empty()
-      hiprint.PrintElementTypeManager.build('.hiprintEpContainer', provider.value);
-      $('#hiprint-printTemplate').empty()
-      let templates = this.$ls.get('KEY_TEMPLATES', {})
-      let template = templates[provider.value] ? templates[provider.value] : {}
+      this.changeMode();
+    },
+    selectAll() {
+      this.template.selectAllElements();
+    },
+    changeMode() {
+      let { mode } = this;
+      let provider = providers[mode];
+      hiprint.init({
+        providers: [provider.f],
+      });
+      $(".hiprintEpContainer").empty();
+      hiprint.PrintElementTypeManager.build(".hiprintEpContainer", provider.value);
+      $("#hiprint-printTemplate").empty();
+      let templates = this.$ls.get("KEY_TEMPLATES", {});
+      let template = templates[provider.value] ? templates[provider.value] : {};
       this.template = hiprintTemplate = new hiprint.PrintTemplate({
         template: template,
         dataMode: 1, // 1:getJson 其他：getJsonTid 默认1
@@ -219,10 +202,10 @@ export default {
           // hiprintTemplate.update(json)
           // console.log(hiprintTemplate.historyList)
         },
-        settingContainer: '#PrintElementOptionSetting',
-        paginationContainer: '.hiprint-printPagination'
+        settingContainer: "#PrintElementOptionSetting",
+        paginationContainer: ".hiprint-printPagination",
       });
-      hiprintTemplate.design('#hiprint-printTemplate');
+      hiprintTemplate.design("#hiprint-printTemplate");
       // 获取当前放大比例, 当zoom时传true 才会有
       this.scaleValue = hiprintTemplate.editingPanel.scale || 1;
     },
@@ -234,14 +217,14 @@ export default {
     setPaper(type, value) {
       try {
         if (Object.keys(this.paperTypes).includes(type)) {
-          this.curPaper = {type: type, width: value.width, height: value.height}
-          hiprintTemplate.setPaper(value.width, value.height)
+          this.curPaper = { type: type, width: value.width, height: value.height };
+          hiprintTemplate.setPaper(value.width, value.height);
         } else {
-          this.curPaper = {type: 'other', width: value.width, height: value.height}
-          hiprintTemplate.setPaper(value.width, value.height)
+          this.curPaper = { type: "other", width: value.width, height: value.height };
+          hiprintTemplate.setPaper(value.width, value.height);
         }
       } catch (error) {
-        this.$message.error(`操作失败: ${error}`)
+        this.$message.error(`操作失败: ${error}`);
       }
     },
     changeScale(big) {
@@ -260,22 +243,22 @@ export default {
       }
     },
     otherPaper() {
-      let value = {}
-      value.width = this.paperWidth
-      value.height = this.paperHeight
-      this.paperPopVisible = false
-      this.setPaper('other', value)
+      let value = {};
+      value.width = this.paperWidth;
+      value.height = this.paperHeight;
+      this.paperPopVisible = false;
+      this.setPaper("other", value);
     },
     preView() {
-      let {width} = this.curPaper
-      this.$refs.preView.show(hiprintTemplate, printData, width)
+      let { width } = this.curPaper;
+      this.$refs.preView.show(hiprintTemplate, printData, width);
     },
     print() {
       if (window.hiwebSocket.opened) {
         const printerList = hiprintTemplate.getPrinterList();
-        console.log(printerList)
-        hiprintTemplate.print2(printData, {printer: '', title: 'hiprint测试打印'});
-        return
+        console.log(printerList);
+        hiprintTemplate.print2(printData, { printer: "", title: "hiprint测试打印" });
+        return;
       }
       this.$error({
         title: "客户端未连接",
@@ -284,10 +267,7 @@ export default {
             连接【{hiwebSocket.host}】失败！
             <br />
             请确保目标服务器已
-            <a
-              href="https://gitee.com/CcSimple/electron-hiprint/releases"
-              target="_blank"
-            >
+            <a href="https://gitee.com/CcSimple/electron-hiprint/releases" target="_blank">
               下载
             </a>
             并
@@ -300,19 +280,19 @@ export default {
       });
     },
     save() {
-      let {mode} = this
-      let provider = providers[mode]
+      let { mode } = this;
+      let provider = providers[mode];
       this.setTemplate({
         name: provider.value,
-        json: hiprintTemplate.getJson()
-      })
+        json: hiprintTemplate.getJson(),
+      });
     },
     setTemplate(payload) {
-      let templates = this.$ls.get('KEY_TEMPLATES', {})
-      console.log(payload.json)
-      templates[payload.name] = payload.json
-      this.$ls.set('KEY_TEMPLATES', templates)
-      this.$message.info('保存成功')
+      let templates = this.$ls.get("KEY_TEMPLATES", {});
+      console.log(payload.json);
+      templates[payload.name] = payload.json;
+      this.$ls.set("KEY_TEMPLATES", templates);
+      this.$message.info("保存成功");
     },
     clearPaper() {
       try {
@@ -320,9 +300,9 @@ export default {
       } catch (error) {
         this.$message.error(`操作失败: ${error}`);
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -348,5 +328,4 @@ export default {
   overflow-x: auto;
   overflow-y: auto;
 }
-
 </style>

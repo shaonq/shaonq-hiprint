@@ -47,6 +47,8 @@ export default {
       this.visible = false
     },
     show(hiprintTemplate, printData, width = '210') {
+      console.log(hiprintTemplate);
+      
       this.visible = true
       this.spinning = true
       this.width = hiprintTemplate.editingPanel ? hiprintTemplate.editingPanel.width : width;
